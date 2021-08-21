@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test FaceBook">
+    <test name="Test to verify the variation FaceBook is login">
+        <classes>
+            <class
+                    name="TestCases.LoginTest">
+            </class>
+
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
+
