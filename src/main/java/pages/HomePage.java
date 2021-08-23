@@ -32,6 +32,7 @@ public class HomePage extends BaseUtiltiy{
 	public LoginPage Logout(){
 		try {
 			AccountMenu.click();
+			Thread.sleep(2000);
 			if (Logout.isDisplayed()) {
 				Logout.click();
 			}

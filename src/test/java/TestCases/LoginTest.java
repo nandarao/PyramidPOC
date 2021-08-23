@@ -55,16 +55,18 @@ public class LoginTest extends BaseUtiltiy{
 	@AfterMethod
 	public void TestDataUpdateResult(){
 		System.out.println("after method skip = "+Testskip + ", TestFail = "+Testfail+", TestCasePass ="+TestCasePass+" PageName "+PageName);
-		Browser.close();
+
 		if(Testskip){
 			BaseUtiltiy.writeExcutionStatusToTestData(FilePath, TestDataSheetName, TestCaseName, StatusUpdate, DataSet+1, "Skip");
 		}
 		else if(Testfail){
 			TestCasePass=false;
 			BaseUtiltiy.writeExcutionStatusToTestData(FilePath, TestDataSheetName, TestCaseName, StatusUpdate, DataSet+1, "Fail");
+			Browser.close();
 		}
 		else {
 			BaseUtiltiy.writeExcutionStatusToTestData(FilePath, TestDataSheetName, TestCaseName, StatusUpdate, DataSet+1, "Pass");
+			Browser.close();
 		}
 		Testskip=false;
 		Testfail=false;
