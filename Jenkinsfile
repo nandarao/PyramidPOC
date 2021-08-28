@@ -1,9 +1,35 @@
-node {
-  stage('Checkout'){
-    git 'https://github.com/nandarao/PyramidPoc.git'
+pipeline {
+
+    agent any
+  
+    tools {
+        maven 'Maven_3.8.2' 
+    }
+  
+    stages {
+       stage('Checkout'){
+         steps {
+           git 'https://github.com/nandarao/PyramidPoc.git'
+         }
+    }
+        stage('Compile stage') {
+            steps {
+                bat "mvn clean compile" 
+        }
+    }
+
+         stage('testing stage') {
+             steps {
+                bat "mvn test"
+        }
+    }
+
+          stage('deployment stage') {
+              steps {
+                bat "mvn deploy"
+        }
+    }
+
   }
-  stage('complit-package'){
-    dif mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
-    sh '${mvnHome}/bin/mvn package' 
-  }
+
 }
