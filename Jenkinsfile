@@ -1,6 +1,10 @@
 pipeline {
 
     agent any
+    
+    triggers {
+        githubPush()
+      }
   
     tools {
         maven 'MAVEN_HOME' 
