@@ -1,12 +1,8 @@
 pipeline {
-
     agent any
-    
-  
     tools {
         maven 'MAVEN_HOME' 
     }
-  
     stages {
        stage('Checkout'){
          steps {
@@ -18,19 +14,15 @@ pipeline {
                 bat "mvn clean compile" 
         }
     }
-
          stage('testing stage') {
              steps {
                 bat "mvn test"
         }
     }
-
           stage('deployment stage') {
               steps {
                 bat "mvn deploy"
         }
     }
-
   }
-
 }
