@@ -28,7 +28,7 @@ public class BaseUtiltiy {
 	public LoginPage login =null;
 	public HomePage home = null;
 
-	public static ReadAndWrite_xlsx TestCaseListExcel= new ReadAndWrite_xlsx("C:\\Users\\kishorenm.PYRAMIDINDIA\\IdeaProjects\\poc\\src\\main\\java\\excel\\Test Cases.xlsx");
+	public static ReadAndWrite_xlsx TestCaseListExcel= new ReadAndWrite_xlsx("src\\main\\java\\testData\\Test Cases Data.xlsx");
 
 	public static  String[] checkRunModeOfTestData(ReadAndWrite_xlsx xlsx, String SheetName, String HeaderOrTastCaseName, String colName){
 		return xlsx.retrieveToRunFlagTestData(SheetName, HeaderOrTastCaseName, colName);

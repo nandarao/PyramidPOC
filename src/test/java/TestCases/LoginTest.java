@@ -38,7 +38,7 @@ public class LoginTest extends BaseUtiltiy{
 			Testskip=true;
 			throw new SkipException("Test Case '"+TestCaseName+"', Test Data row number "+DataSet+" Runmode is No. So Skipping Its Execution.");
 		}
-		System.setProperty("webdriver.gecko.driver", "C:\\Users\\kishorenm.PYRAMIDINDIA\\Downloads\\geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver", "src\\main\\java\\drivers\\geckodriver.exe");
 		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 		capabilities.setCapability("marionette",true);
 		Browser = new FirefoxDriver(capabilities);
