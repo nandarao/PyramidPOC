@@ -33,11 +33,6 @@
             <version>7.4.0</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>5.0.2</version>
-        </dependency>
     </dependencies>
     <build>
         <pluginManagement>

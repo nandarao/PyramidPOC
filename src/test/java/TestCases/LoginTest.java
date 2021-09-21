@@ -1,8 +1,6 @@
 package TestCases;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -41,13 +39,9 @@ public class LoginTest extends BaseUtiltiy{
 			throw new SkipException("Test Case '"+TestCaseName+"', Test Data row number "+DataSet+" Runmode is No. So Skipping Its Execution.");
 		}
 		System.setProperty("webdriver.gecko.driver", "src\\main\\java\\drivers\\geckodriver.exe");
-		WebDriverManager.firefoxdriver().setup();
-		FirefoxOptions firefoxOptions = new FirefoxOptions();
-		firefoxOptions.addArguments("--display=0");
-		Browser = new FirefoxDriver(firefoxOptions);
-//		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-//		capabilities.setCapability("marionette",true);
-//		Browser = new FirefoxDriver(capabilities);
+		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+		capabilities.setCapability("marionette",true);
+		Browser = new FirefoxDriver(capabilities);
 		Browser.get(data.get("Url"));
 		LoginPage lp=PageFactory.initElements(Browser, LoginPage.class);
 		home= lp.doLogin(data.get("Username"), data.get("Password"));
