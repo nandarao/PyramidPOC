@@ -1,5 +1,7 @@
 package TestCases;
 
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
@@ -38,10 +40,20 @@ public class LoginTest extends BaseUtiltiy{
 			Testskip=true;
 			throw new SkipException("Test Case '"+TestCaseName+"', Test Data row number "+DataSet+" Runmode is No. So Skipping Its Execution.");
 		}
-		System.setProperty("webdriver.gecko.driver", "src\\main\\java\\drivers\\geckodriver.exe");
-		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-		capabilities.setCapability("marionette",true);
-		Browser = new FirefoxDriver(capabilities);
+		if (data.get("BrowserType").equalsIgnoreCase("CH")){
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--disable-notifications");
+			System.setProperty("webdriver.chrome.driver","src\\main\\java\\drivers\\chromedriver.exe");
+			Browser = new ChromeDriver(options);
+
+		}
+		else if(data.get("BrowserType").equalsIgnoreCase("FF")){
+			System.setProperty("webdriver.gecko.driver", "src\\main\\java\\drivers\\geckodriver.exe");
+			DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+			capabilities.setCapability("marionette",true);
+			Browser = new FirefoxDriver(capabilities);
+		}
+		Browser.manage().window().maximize();
 		Browser.get(data.get("Url"));
 		LoginPage lp=PageFactory.initElements(Browser, LoginPage.class);
 		home= lp.doLogin(data.get("Username"), data.get("Password"));

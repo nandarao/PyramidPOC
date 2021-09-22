@@ -2,11 +2,7 @@ package pages;
 
 import java.io.File;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -64,19 +60,14 @@ WebDriver Browser;
 		System.out.println("Start TestSkip = "+Testskip + ", TestFail = "+Testfail+", TestCasePass ="+TestCasePass+ ", PageName "+PageName);
 		emailOrPhone(userIDValue);
  		password(passwordValue);
- 		
  		if (LogIn.isDisplayed()) {
- 			
- 			System.out.println("take screenshots"); 				
- 			
+ 			System.out.println("take screenshots");
  		}
  		login();
-		
-	} catch (Exception e) {
 
+	} catch (Exception e) {
 		Testfail=true;
-	//	Assert.assertFalse(Testfail, "Test Case '"+TestCaseName+"', Page '"+PageName+"' for Data set '"+(DataSet+1)+"' got Fail");
-		
+		Assert.assertFalse(Testfail, "Test Case '"+TestCaseName+"', Page '"+PageName+"' for Data set '"+(DataSet+1)+"' got Fail");
 	}
 	int Logout = Browser.findElements(By.xpath("//div[@aria-label='Account']")).size();
 	
@@ -89,6 +80,4 @@ WebDriver Browser;
 		return null;
 	}
 	}
-	
-	
 }
